@@ -1,0 +1,466 @@
+/* Basic Reset & Font */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f4f7f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #333;
+}
+
+/* Converter Container */
+.converter-container {
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 450px;
+  width: 90%;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+/* File Input Styling */
+.file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #3498db;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  margin-bottom: 1.5rem;
+}
+
+.file-label:hover {
+  background-color: #2980b9;
+}
+
+.file-label:active {
+    transform: scale(0.98);
+}
+
+.file-label.disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+/* Result Section */
+.result-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ecf0f1;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.file-name {
+  font-size: 0.9rem;
+  color: #34495e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 1rem;
+}
+
+/* Button Component Styling (assuming it renders a <button>) */
+.download-button {
+  display: inline-flex; /* Use flex for icon alignment */
+  align-items: center;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #2ecc71;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.download-button:hover {
+  background-color: #27ae60;
+}
+
+.download-button:active {
+    transform: scale(0.98);
+}
+
+.download-button .icon {
+  margin-right: 0.5rem;
+  width: 16px; /* Adjust icon size */
+  height: 16px;
+}
+
+
+/* Error Message */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  font-weight: 500;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Loading Indicator */
+.loading-indicator {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  border: 3px solid #f3f3f3; /* Light grey */
+  border-top: 3px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 500px) {
+  .converter-container {
+    padding: 1.5rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  .file-label, .download-button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
+  .result-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem;
+  }
+  .file-name {
+      margin-bottom: 0.5rem;
+      margin-right: 0; /* Remove right margin in column layout */
+  }
+  .download-button {
+      width: 100%;
+      justify-content: center; /* Center button content */
+  }
+
+}
+
+/* Basic Reset & Font */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f0f4f8; /* Lighter background */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align top for potential scroll */
+  min-height: 100vh;
+  padding: 2rem 1rem; /* Add padding for smaller screens */
+  color: #334155; /* Darker text color */
+}
+
+/* Converter Container */
+.converter-container {
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  max-width: 500px;
+  width: 100%; /* Responsive width */
+  border: 1px solid #e2e8f0; /* Subtle border */
+}
+
+h2 {
+  font-size: 1.75rem; /* Slightly smaller */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #1e293b; /* Even darker heading */
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #64748b; /* Softer description text */
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.description code {
+    background-color: #f1f5f9;
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #475569;
+}
+
+
+/* Shared Button Styles */
+.button-style {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px; /* Slightly more rounded */
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; /* Ensure it fits */
+}
+
+.button-style .icon {
+  margin-right: 0.6rem;
+  width: 18px;
+  height: 18px;
+}
+
+.button-style:active {
+    transform: scale(0.98);
+}
+
+.button-style.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* File Input Specific Styling */
+.file-input { /* Visually hide the actual input */
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.file-label { /* Style the label like a button */
+  color: #fff;
+  background-color: #3b82f6; /* Blue */
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+  margin-bottom: 1.5rem;
+}
+
+.file-label:hover:not(.disabled) {
+  background-color: #2563eb;
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+
+/* Result Section */
+.result-section {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem; /* Spacing between elements */
+  background-color: #f8fafc; /* Very light background */
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  border: 1px solid #e2e8f0;
+  animation: fadeInScale 0.5s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.result-info {
+    display: flex;
+    flex-direction: column; /* Stack name and size */
+    align-items: flex-start; /* Align text left */
+    flex-grow: 1; /* Allow info to take available space */
+    overflow: hidden; /* Prevent long names from breaking layout */
+}
+
+.file-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; /* Ensure ellipsis works */
+}
+
+.file-size {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+
+/* Download Button */
+.download-button {
+  color: #fff;
+  background-color: #10b981; /* Green */
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+  flex-shrink: 0; /* Prevent button from shrinking too much */
+}
+
+.download-button:hover:not(.disabled) {
+  background-color: #059669;
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+
+/* Error Message */
+.error-message {
+  color: #ef4444; /* Red */
+  background-color: #fee2e2; /* Light red background */
+  border: 1px solid #fca5a5; /* Red border */
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+  font-weight: 500;
+  text-align: left; /* Align error text left */
+  animation: shake 0.4s ease-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #475569;
+  display: flex;
+  flex-direction: column; /* Stack bar and text */
+  align-items: center;
+}
+
+.progress-bar-container {
+  width: 80%;
+  max-width: 300px; /* Max width for the bar */
+  height: 10px;
+  background-color: #e2e8f0; /* Bar background */
+  border-radius: 5px;
+  overflow: hidden; /* Clip the inner bar */
+  margin-bottom: 0.5rem; /* Space between bar and text */
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #3b82f6; /* Blue progress */
+  width: 0%; /* Initial width */
+  border-radius: 5px;
+  transition: width 0.3s ease-out; /* Smooth progress animation */
+}
+
+/* Footer Info */
+.info-footer {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: #94a3b8; /* Lighter grey */
+    line-height: 1.4;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  body {
+      padding: 1rem 0.5rem; /* Less padding on very small screens */
+      align-items: flex-start; /* Allow scrolling */
+  }
+  .converter-container {
+    padding: 1.5rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  .button-style {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
+   .button-style .icon {
+       margin-right: 0.5rem;
+       width: 16px;
+       height: 16px;
+   }
+
+  .result-section {
+    flex-direction: column; /* Stack info and button */
+    align-items: stretch; /* Make items full width */
+    padding: 1rem;
+  }
+  .result-info {
+      align-items: center; /* Center text when stacked */
+      margin-bottom: 0.8rem; /* Space before button */
+  }
+  .download-button {
+      width: 100%; /* Full width button */
+  }
+}
+
